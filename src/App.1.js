@@ -2,11 +2,10 @@ import { useState, useRef } from "react";
 import Player from "./components/Player";
 import Song from "./components/Song";
 import Nav from "./components/Nav";
-import "./styles/app.scss";
 import data from "./util";
 import Library from "./components/Library";
 
-function App() {
+export function App() {
   //ref
   const audio = useRef(null);
 
@@ -32,17 +31,13 @@ function App() {
     });
   }
 
-  function handelAudioEnd() {
+  async function handelAudioEnd() {
     const index = songs.findIndex((object) => {
       return object.id === currentSong.id;
     });
-    setCurrentSong(songs[(index + 1) % songs.length]);
-    //fixes the bug of The play() request was interrupted by a new load request.
-    setTimeout(() => {
-      if (isPlaying) audio.current.play();
-    }, 200);
+    await setCurrentSong(songs[(index + 1) % songs.length]);
+    if (isPlaying) audio.current.play();
   }
-
   return (
     <div className="App">
       <Nav libraryState={libraryState} setLibraryState={setLibraryState} />
@@ -78,5 +73,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

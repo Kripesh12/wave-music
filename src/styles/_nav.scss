@@ -1,0 +1,24 @@
+.nav {
+  display: flex;
+  height: 10vh;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-btn {
+  background-color: transparent;
+  border: 3px solid gray;
+  padding: 1em 1.5em;
+  transition: all ease-in 100ms;
+  &:hover {
+    cursor: pointer;
+    background-color: gray;
+    color: white;
+  }
+}
+
+@media screen and (max-width: 668px) {
+  .nav-btn {
+    z-index: 10;
+  }
+}

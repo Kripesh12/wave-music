@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  color: rgb(53, 53, 53);
+}
+
+@import "./song";
+@import "./player";
+@import "./library";
+@import "./nav";
